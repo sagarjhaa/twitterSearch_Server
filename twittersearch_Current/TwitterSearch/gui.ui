@@ -1,0 +1,414 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface>
+  <object class="ttk.Frame" id="mainwindow">
+    <property name="height">200</property>
+    <property name="width">200</property>
+    <layout>
+      <property name="column">0</property>
+      <property name="propagate">True</property>
+      <property name="row">0</property>
+    </layout>
+    <child>
+      <object class="ttk.Label" id="Label_10">
+        <property name="text" translatable="yes">Keywords:</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">1</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Entry" id="Entry_10">
+        <property name="text" translatable="yes">big,data</property>
+        <property name="textvariable">string:keywords</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="propagate">True</property>
+          <property name="row">1</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="Label_3">
+        <property name="text" translatable="yes">Result language:</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Combobox" id="lang_combobox">
+        <property name="state">readonly</property>
+        <property name="textvariable">string:language</property>
+        <property name="width">17</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="Label_4">
+        <property name="text" translatable="yes">Maximum tweets per day:</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">4</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Entry" id="Entry_4">
+        <property name="text" translatable="yes">100</property>
+        <property name="textvariable">int:count</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="propagate">True</property>
+          <property name="row">4</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Checkbutton" id="Checkbutton_5">
+        <property name="command">on_geocode_checkbox_clicked</property>
+        <property name="offvalue">False</property>
+        <property name="onvalue">True</property>
+        <property name="text" translatable="yes">Search location</property>
+        <property name="variable">boolean:geocode</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="columnspan">2</property>
+          <property name="propagate">True</property>
+          <property name="row">5</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Labelframe" id="geocode_frame">
+        <property name="height">200</property>
+        <property name="text" translatable="yes">Location</property>
+        <property name="width">200</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="columnspan">2</property>
+          <property name="propagate">True</property>
+          <property name="row">6</property>
+        </layout>
+        <child>
+          <object class="ttk.Label" id="Label_5">
+            <property name="text" translatable="yes">Latitude:</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="Entry_5">
+            <property name="textvariable">double:geocode_lat</property>
+            <property name="validate">focusout</property>
+            <property name="validatecommand">validate_float</property>
+            <property name="validatecommand_args">%P</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="Label_6">
+            <property name="text" translatable="yes">Longitude:</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="Entry_3">
+            <property name="textvariable">double:geocode_lon</property>
+            <property name="validate">focusout</property>
+            <property name="validatecommand">validate_float</property>
+            <property name="validatecommand_args">%P</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="Label_7">
+            <property name="text" translatable="yes">Radius:</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="Entry_6">
+            <property name="textvariable">int:geocode_radius</property>
+            <property name="validate">focusout</property>
+            <property name="validatecommand">validate_radius</property>
+            <property name="validatecommand_args">%P</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="Label_8">
+            <property name="text" translatable="yes">Radius unit:</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Combobox" id="geocode_radius_unit_combobox">
+            <property name="state">readonly</property>
+            <property name="textvariable">string:geocode_radius_unit</property>
+            <property name="values">miles kilometers</property>
+            <property name="width">17</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Checkbutton" id="geoonly_checkbox">
+        <property name="offvalue">False</property>
+        <property name="onvalue">True</property>
+        <property name="text" translatable="yes">Only search tweets with coordinates</property>
+        <property name="variable">boolean:geoonly</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="columnspan">2</property>
+          <property name="propagate">True</property>
+          <property name="row">7</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Labelframe" id="recent_config_frame">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="columnspan">2</property>
+          <property name="propagate">True</property>
+          <property name="row">8</property>
+        </layout>
+        <child>
+          <object class="ttk.Label" id="Label_1">
+            <property name="text" translatable="yes">Last:</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Combobox" id="last_n_days_combobox">
+            <property name="exportselection">true</property>
+            <property name="state">readonly</property>
+            <property name="textvariable">int:last_n_days</property>
+            <property name="values">1 2 3 4 5 6 7</property>
+            <property name="width">17</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="Label_11">
+            <property name="text" translatable="yes">days</property>
+            <layout>
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="save_to_csv_checkbox">
+            <property name="offvalue">False</property>
+            <property name="onvalue">True</property>
+            <property name="state">normal</property>
+            <property name="text" translatable="yes">Save to csv file:</property>
+            <property name="variable">boolean:save_to_csv</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="Entry_11">
+            <property name="text" translatable="yes">result.csv</property>
+            <property name="textvariable">string:csvfile</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="save_to_kml_checkbox">
+            <property name="offvalue">False</property>
+            <property name="onvalue">True</property>
+            <property name="text" translatable="yes">Save to kml file:</property>
+            <property name="variable">boolean:save_to_kml</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="Entry_1">
+            <property name="text" translatable="yes">result.kml</property>
+            <property name="textvariable">string:kmlfile</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Labelframe" id="task_status_frame">
+        <property name="height">200</property>
+        <property name="text" translatable="yes">Task status</property>
+        <property name="width">200</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="columnspan">2</property>
+          <property name="propagate">True</property>
+          <property name="row">9</property>
+          <property name="rowspan">1</property>
+        </layout>
+        <child>
+          <object class="ttk.Label" id="Label_14">
+            <property name="text" translatable="yes">Getting tweets</property>
+            <property name="textvariable">string:description</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="columnspan">2</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="Label_13">
+            <property name="text" translatable="yes">Status:</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="columnspan">1</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="Entry_8">
+            <property name="state">readonly</property>
+            <property name="text" translatable="yes">No task is running.</property>
+            <property name="textvariable">string:task_status</property>
+            <property name="width">60</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="columnspan">1</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="Button_1">
+            <property name="command">on_cancel_button_clicked</property>
+            <property name="text" translatable="yes">Cancel</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="columnspan">2</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="Label_12">
+        <property name="borderwidth">1</property>
+        <property name="text" translatable="yes">Description</property>
+        <property name="textvariable">string:usage</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="columnspan">2</property>
+          <property name="propagate">True</property>
+          <property name="row">10</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="btnRun">
+        <property name="command">on_run_button_clicked</property>
+        <property name="text" translatable="yes">Run</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">11</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="btnQuit">
+        <property name="command">on_close_button_clicked</property>
+        <property name="text" translatable="yes">Close</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="propagate">True</property>
+          <property name="row">12</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="btnAna">
+        <property name="command">on_analysis_button_click</property>
+        <property name="text" translatable="yes">Analysis</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">12</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+</interface>
